@@ -1,11 +1,13 @@
 <?php
 	session_start();
-	if (isset($_COOKIE['user'])) {
+
+	require_once('lib/twig.php');
+	require_once('vendor/checksignin.php');
+	
+	if (checkAuth()) {
 		header("Location: index.php");
 		exit;
-	}
-
-	require_once('lib/twig.php');	
+	}	
 
 	$error = "";
 	if (isset($_SESSION['error'])) {

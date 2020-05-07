@@ -20,7 +20,15 @@
 			$_SESSION['error'] = 'Wrong login or password';
 			header("Location: ../login.php");
 		} else {
-			setcookie("user", $sth->fetch()['username'], time() + 3600, "/");
+			$key = bin2hex(random_bytes(32));
+
+			$sth = $pdo->prepare("UPDATE `users` SET `cookie` = ? WHERE `username` = ?");
+			$sth->bindValue(1, $key, PDO::PARAM_STR);
+			$sth->bindValue(2, $username, PDO::PARAM_STR);
+			$sth->execute();
+
+			setcookie("user", $username, time() + 3600, "/");
+			setcookie("key", $key, time() + 3600, "/");
 			header("Location: ../index.php");
 		}
 	}

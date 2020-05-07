@@ -2,6 +2,7 @@
 	session_start();
 	require_once('lib/twig.php');
 	require_once('vendor/connection.php');
+	require_once('vendor/checksignin.php');
 
 	$game_name = "";
 	if (isset($_GET['name'])) {
@@ -23,7 +24,7 @@
 	$sth->execute();
 
 	echo $twig->render('game.html.twig', [
-			'isLogin' => isset($_COOKIE['user']),
+			'isLogin' => checkAuth(),
 			'game' => $sth->fetch(),
 			'error' => $error
 		]);

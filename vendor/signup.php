@@ -22,11 +22,12 @@
 		sendMessage($email, "Login: " . $username . "<br>Password: " . $password);
 		$password = hash('sha256', $password);
 
-		$sth = $pdo->prepare("INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES (NULL, ?, ?, ?)");
+		$sth = $pdo->prepare("INSERT INTO `users` (`id`, `username`, `email`, `password`, `cookie`) VALUES (NULL, ?, ?, ?, ?)");
 	
 		$sth->bindValue(1, $username, PDO::PARAM_STR);
 		$sth->bindValue(2, $email, PDO::PARAM_STR);
 		$sth->bindValue(3, $password, PDO::PARAM_STR);
+		$sth->bindValue(4, bin2hex(random_bytes(32)), PDO::PARAM_STR);
 
 		try
 		{
