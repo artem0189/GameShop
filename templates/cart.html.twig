@@ -1,0 +1,42 @@
+{% extends "base-content.html.twig" %}
+
+{% block title %}
+    Cart
+{% endblock %}
+
+{% block headerbg %}
+    height: 60vh;
+    background-image: url('assets/img/catalog.jpg');
+{% endblock %}
+
+{% block headertext %}
+    <div class="header-text container" style="margin-top: 10vh;">
+        <h2>The Best <span class="color-orange">Games</span> Out There</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada<br>
+            lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien.<br>
+            Suspendisse cursus faucibus finibus.
+        </p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="cart-content">
+        <div class="container">
+            <ul class="cart__list">
+                {% for game in games %}
+                    <li class=cart__elem>
+                        <div class="cart__item">
+                            <div class="cart__item__header">{{ game.name }}</div>
+                            <div class="cart__item__count">
+                                <input type="number" min="1" value="{{ game.count }}">
+                            </div>
+                            <div class="cart__item__price">$ {{ game.price }}</div>
+                            <a href="vendor/deleteFromCart.php?id={{ game.id }}" class="cart__item__delete"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

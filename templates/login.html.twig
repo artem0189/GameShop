@@ -1,0 +1,21 @@
+{% extends "base-auth.html.twig" %}
+
+{% block title %}
+	Sign In
+{% endblock %}
+
+{% block form %}
+	<div class="form-header">
+		<i class="fas fa-unlock color-white"></i>
+		<div class="form-header__content">Sign In</div>
+	</div>
+	<p class="error">{{ error }}</p>
+	<form class="form-content" action="vendor/signin.php" method="POST">
+		<input type="text" name="username" placeholder="Username">
+		<input type="password" name="password" placeholder="Password">
+		<button type=submit class="form-submit">Sign In</button>
+	</form>
+	<div class="form__registration">
+		<a href="registration.php">Sign Up</a>
+	</div>
+{% endblock %}

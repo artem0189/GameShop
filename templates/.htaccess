@@ -1,0 +1,3 @@
+<FilesMatch ~ "\.(twig)$">
+	Require all denied
+</FilesMatch>

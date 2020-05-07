@@ -1,0 +1,41 @@
+{% extends "base-content.html.twig" %}
+
+{% block title %}
+    {{ game.name }}
+{% endblock %}
+
+{% block headerbg %}
+    height: 70vh;
+    background-image: url('{{ game.image }}');
+{% endblock %}
+
+{% block headerblackout %}
+    background-color: rgba(0, 0, 0, 0.7);
+{% endblock %}
+
+{% block headertext %}
+    <div class="header-text container" style="margin-top: 18vh;">
+        <h2>{{ game.name }}</h2>
+        <p class="game-info__description">{{ game.short_description }}</p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="game-content">
+            <div class="container">
+            <div class="game-description">
+                <div class="game-description__header">
+                    Description:
+                </div>
+                <div class="game-description__text">
+                    {{ game.description }}
+                </div>
+                <div class="game-description__price">
+                    Price: $ {{ game.price }}
+                </div>
+            </div>
+            <a href="vendor/addToCart.php?id={{ game.id }}&name={{ game.name }}" class="game-add">Add to cart</a>
+            <div class="game-error">{{ error }}</div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;900&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/9553b08d0f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header" style="{% block headerbg %}{% endblock %}">
+        <div class="header-overlay" style="{% block headerblackout %}{% endblock %}">
+            <div class="nav-container container">
+                <div class="logo">
+                	<span class="color-orange">Game</span>
+                	<span class="color-gray">Shop</span>
+            	</div>
+                <div class="nav-wrapper">
+                    <ul class="nav">
+                        <li class="nav__item"><a href="index.php" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="catalog.php" class="nav__link">Catalog</a></li>
+                        {% if isLogin == true %}
+                            <li class="nav__item">
+                                <div class="nav__item__icon">
+                                    <a href="cart.php"><i class="fas fa-shopping-cart icon_class"></i></a>
+                                    <a href="vendor/signout.php"><i class="fas fa-sign-out-alt icon_class"></i></a>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="authorization__item"><a href="login.php" class="authorization__link">Sing In/Sing Up</a></li>
+                        {% endif %}
+                    </ul>
+                    <div id="menu-togle" class="menu-icon">
+                        <i class="fas fa-bars" style="color: #FFFFFF;font-size: 30px;"></i>
+                    </div>
+                    <div id="mobile-nav" class="mobile-nav">
+                        <div class="mobile-nav__title">Navigation</div>
+                        <ul class="mobile-nav__list">
+                        	<li class="mobile-nav__item"><a href="index.php" class="mobile-nav__link">Home</a></li>
+                        	<li class="mobile-nav__item"><a href="catalog.php" class="mobile-nav__link">Catalog</a></li>
+                            {% if isLogin == true %}
+                                <li class="nav__item">
+                                    <div class="mobile-nav__item__icon">
+                                        <a href="cart.php"><i class="fas fa-shopping-cart icon_class"></i></a>
+                                        <a href="vendor/signout.php"><i class="fas fa-sign-out-alt icon_class"></i></a>
+                                    </div>
+                                </li>
+                            {% else %}
+                                <li class="authorization__item"><a href="login.php" class="authorization__link">Sing In/Sing Up</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% block headertext %}{% endblock %}
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer">
+    	<div class="footer-container container">
+    		<p>Copyright ©2020 All rights reserved | This template is made with by BSUIR</p>
+    		<ul class="footer__nav">
+                <li class="footer__item"><a href="index.php" class="footer__link">Home</a></li>
+                <li class="footer__item"><a href="catalog.php" class="footer__link">Catalog</a></li>
+            </ul>
+    	</div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

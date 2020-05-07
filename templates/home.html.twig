@@ -1,0 +1,66 @@
+{% extends "base-content.html.twig" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block headerbg %}
+    height: 100vh;
+    background-image: url('assets/img/home.jpg');
+{% endblock %}
+
+{% block headertext %}
+    <div class="header-text container" style="margin-top: 30vh;">
+        <h2>The Best <span class="color-orange">Games</span> Out There</h2>
+        <p>
+            We also deliver the UK’s biggest gaming festival, Insomnia,<br>which attracts over 150,000 fans a year and host other<br>gaming events including StratLAN.
+        </p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="about-us">
+        <div class="container">
+            <div class="about-us__header">
+                <h2>About Us</h2>
+                <p>Our specialist retail offering remains an important part of our business, through which we’re fuelling the passion for gaming by providing local gaming communities with sought after exclusives, unique trade-in opportunities and passionate and knowledgeable teams.</p>
+            </div>
+            <ul class="about-us__content">
+                <div class="about-us__item">
+                    <i class="far fa-bell fa-5x"></i>
+                    <h3>Awesome Game</h3>
+                    <p>We are GAME. You’ve probably heard of us from the high street, however, we’re more than just a games retailer.</p>
+                </div>
+                <div class="about-us__item">
+                    <i class="fas fa-cart-arrow-down fa-5x"></i>
+                    <h3>One Page</h3>
+                    <p>BELONG is our groundbreaking network of gaming arenas in which our customers can play together and trial new games and products.</p>
+                </div>
+                <div class="about-us__item">
+                    <i class="fas fa-chalkboard-teacher fa-5x"></i>
+                    <h3>Fully Responsive</h3>
+                    <p>BELONG is a place for grass-roots esports tournaments and even provides a gateway to the international esports scene.</p>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <div class="products-content">
+        <div class="container">
+            <div class="product-header">Most popular</div>
+            <ul class="products__list">
+                {% for game in games %}
+                    <div class="products__item">
+                        <div class="products__item__img">
+                            <a href="game.php?name={{ game.name }}"><img src="{{ game.image }}"></a>
+                        </div>
+                        <div class="products__item__info">
+                            <h3>{{ game.name }}</h3>
+                            <span class="color-orange">$ {{ game.price }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

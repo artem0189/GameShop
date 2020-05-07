@@ -1,0 +1,42 @@
+{% extends "base-content.html.twig" %}
+
+{% block title %}
+    Catalog
+{% endblock %}
+
+{% block headerbg %}
+    height: 100vh;
+    background-image: url('assets/img/catalog.jpg');
+{% endblock %}
+
+{% block headertext %}
+    <div class="header-text container" style="margin-top: 30vh;">
+        <h2>The Best <span class="color-orange">Games</span> Out There</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada<br>
+            lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien.<br>
+            Suspendisse cursus faucibus finibus.
+        </p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="catalog-content">
+        <div class="container">
+            <div class="catalog-header">Catalog</div>
+            <ul class="products__list">
+                {% for game in games %}
+                    <div class="products__item">
+                        <div class="products__item__img">
+                            <a href="game.php?name={{ game.name }}"><img src="{{ game.image }}"></a>
+                        </div>
+                        <div class="products__item__info">
+                            <h3>{{ game.name }}</h3>
+                            <span class="color-orange">$ {{ game.price }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
