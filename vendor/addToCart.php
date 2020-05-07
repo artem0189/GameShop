@@ -1,6 +1,8 @@
 <?php
 	session_start();
-	if (!isset($_COOKIE['user'])) {
+
+	require_once('checksignin.php');
+	if (!checkAuth()) {
 		$_SESSION['error'] = 'You need to sign in';
 		header("Location: ../game.php?name=" . $_GET['name']);
 		exit;
